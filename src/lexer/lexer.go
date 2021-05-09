@@ -104,6 +104,8 @@ func (l *Lexer) getIdentifier() string {
 		l.readChar()
 	}
 
+	l.nexPosition = l.position
+
 	return l.input[start:l.position]
 }
 
@@ -117,6 +119,8 @@ func (l *Lexer) getNumber() string {
 	for l.isNumber() || l.char == '.' {
 		l.readChar()
 	}
+
+	l.nexPosition = l.position
 
 	return l.input[start:l.position]
 }
