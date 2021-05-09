@@ -18,6 +18,7 @@ const (
 
 	INTEGER = "INTEGER"
 	FLOAT   = "FLOAT"
+	STRING  = "STRING"
 
 	OUT = "OUT"
 

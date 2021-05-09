@@ -36,6 +36,9 @@ func (l *Lexer) NextToken() token.Token {
 		t = token.New(token.DIVIDE, "/")
 	case '=':
 		t = token.New(token.PLUS, "=")
+	case '"':
+		str := l.getString()
+		t = token.New(token.STRING, str)
 	case 0:
 		t = token.New(token.EOF, "")
 	default:
@@ -71,6 +74,17 @@ func (l *Lexer) skipWhitespace() {
 	for l.char == ' ' || l.char == '\n' || l.char == '\t' || l.char == '\r' {
 		l.readChar()
 	}
+}
+
+func (l *Lexer) getString() string {
+	start := l.position
+	l.readChar()
+
+	for l.char != '"' {
+		l.readChar()
+	}
+
+	return l.input[start:l.nexPosition]
 }
 
 func (l *Lexer) isIdentifier() bool {

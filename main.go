@@ -11,7 +11,8 @@ func main() {
 	input := `
 		myVar = 42
 		PI = 3.14
-		out 1`
+		out "I'm a string"
+	`
 
 	l := lexer.New(input)
 
