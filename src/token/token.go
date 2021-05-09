@@ -51,7 +51,7 @@ const (
 	EOF     = "EOF"
 )
 
-var identifiers = map[string]TokenType{
+var keywords = map[string]TokenType{
 	"out":    OUT,
 	"if":     IF,
 	"else":   ELSE,
@@ -68,8 +68,8 @@ func New(t TokenType, v string) Token {
 }
 
 func GetIdentifierType(i string) TokenType {
-	if _, ok := identifiers[i]; ok {
-		return identifiers[i]
+	if t, ok := keywords[i]; ok {
+		return t
 	}
 
 	return IDENTIFIER

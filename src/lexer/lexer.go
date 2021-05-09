@@ -62,7 +62,7 @@ func (l *Lexer) NextToken() token.Token {
 			t = token.New(token.EQUAL, "==")
 			l.readChar()
 		} else {
-			t = token.New(token.PLUS, "=")
+			t = token.New(token.ASSIGN, "=")
 		}
 	case '!':
 		if l.input[l.nexPosition] == '=' {
