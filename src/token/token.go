@@ -20,14 +20,23 @@ const (
 	FLOAT   = "FLOAT"
 	STRING  = "STRING"
 
-	OUT = "OUT"
+	OUT   = "OUT"
+	IF    = "IF"
+	TRUE  = "TRUE"
+	FALSE = "FALSE"
+
+	BLOCK_CLOSE = "BLOCK_CLOSE"
+	LEFT_PAREN  = "LEFT_PARENT"
+	RIGHT_PAREN = "RIGHT_PARENT"
 
 	INVALID = "INVALID"
 	EOF     = "EOF"
 )
 
 var identifiers = map[string]TokenType{
-	"out": OUT,
+	"out":   OUT,
+	"if":    IF,
+	"false": FALSE,
 }
 
 func New(t TokenType, v string) Token {

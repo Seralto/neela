@@ -11,7 +11,16 @@ func main() {
 	input := `
 		myVar = 42
 		PI = 3.14
+
+		2 * (3 + 5)
+
 		out "I'm a string"
+
+		if true
+		  out "You are right"
+		.
+
+		lie = false
 	`
 
 	l := lexer.New(input)

@@ -36,11 +36,17 @@ func (l *Lexer) NextToken() token.Token {
 		t = token.New(token.DIVIDE, "/")
 	case '=':
 		t = token.New(token.PLUS, "=")
+	case '(':
+		t = token.New(token.LEFT_PAREN, "(")
+	case ')':
+		t = token.New(token.RIGHT_PAREN, ")")
+	case '.':
+		t = token.New(token.BLOCK_CLOSE, ".")
+	case 0:
+		t = token.New(token.EOF, "")
 	case '"':
 		str := l.getString()
 		t = token.New(token.STRING, str)
-	case 0:
-		t = token.New(token.EOF, "")
 	default:
 		if l.isIdentifier() {
 			identifier := l.getIdentifier()
