@@ -21,6 +21,12 @@ func main() {
 		.
 
 		lie = false
+
+		1 == 1
+		5 != 10
+		!true
+
+		[{:,}]
 	`
 
 	l := lexer.New(input)

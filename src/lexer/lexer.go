@@ -34,19 +34,43 @@ func (l *Lexer) NextToken() token.Token {
 		t = token.New(token.MULTIPLY, "*")
 	case '/':
 		t = token.New(token.DIVIDE, "/")
-	case '=':
-		t = token.New(token.PLUS, "=")
 	case '(':
 		t = token.New(token.LEFT_PAREN, "(")
 	case ')':
 		t = token.New(token.RIGHT_PAREN, ")")
+	case '{':
+		t = token.New(token.LEFT_BRACE, "{")
+	case '}':
+		t = token.New(token.RIGHT_BRACE, "}")
+	case '[':
+		t = token.New(token.LEFT_BRACKET, "[")
+	case ']':
+		t = token.New(token.RIGHT_BRACKET, "]")
 	case '.':
 		t = token.New(token.BLOCK_CLOSE, ".")
+	case ',':
+		t = token.New(token.COMMA, ",")
+	case ':':
+		t = token.New(token.COLON, ":")
 	case 0:
 		t = token.New(token.EOF, "")
 	case '"':
 		str := l.getString()
 		t = token.New(token.STRING, str)
+	case '=':
+		if l.input[l.nexPosition] == '=' {
+			t = token.New(token.EQUAL, "==")
+			l.readChar()
+		} else {
+			t = token.New(token.PLUS, "=")
+		}
+	case '!':
+		if l.input[l.nexPosition] == '=' {
+			t = token.New(token.NOT_EQUAL, "!=")
+			l.readChar()
+		} else {
+			t = token.New(token.NOT, "!")
+		}
 	default:
 		if l.isIdentifier() {
 			identifier := l.getIdentifier()

@@ -8,11 +8,16 @@ type Token struct {
 }
 
 const (
-	PLUS     = "PLUS"
-	MINUS    = "MINUS"
-	DIVIDE   = "DIVIDE"
-	MULTIPLY = "MULTIPLY"
-	ASSIGN   = "ASSIGN"
+	PLUS         = "PLUS"
+	MINUS        = "MINUS"
+	DIVIDE       = "DIVIDE"
+	MULTIPLY     = "MULTIPLY"
+	ASSIGN       = "ASSIGN"
+	EQUAL        = "EQUAL"
+	NOT_EQUAL    = "NOT_EQUAL"
+	NOT          = "NOT"
+	GREATER_THAN = "GREATER_THAN"
+	LESS_THAN    = "LESS_THAN"
 
 	IDENTIFIER = "IDENTIFIER"
 
@@ -20,23 +25,42 @@ const (
 	FLOAT   = "FLOAT"
 	STRING  = "STRING"
 
-	OUT   = "OUT"
-	IF    = "IF"
+	OUT    = "OUT"
+	IF     = "IF"
+	ELSE   = "ELSE"
+	FUN    = "FUN"
+	FOR    = "FOR"
+	IN     = "IN"
+	RETURN = "RETURN"
+
 	TRUE  = "TRUE"
 	FALSE = "FALSE"
 
 	BLOCK_CLOSE = "BLOCK_CLOSE"
-	LEFT_PAREN  = "LEFT_PARENT"
-	RIGHT_PAREN = "RIGHT_PARENT"
+	COMMA       = "COMMA"
+	COLON       = "COLON"
+
+	LEFT_PAREN    = "LEFT_PARENT"
+	RIGHT_PAREN   = "RIGHT_PARENT"
+	LEFT_BRACE    = "LEFT_BRACE"
+	RIGHT_BRACE   = "RIGHT_BRACE"
+	LEFT_BRACKET  = "LEFT_BRACKET"
+	RIGHT_BRACKET = "RIGHT_BRACKET"
 
 	INVALID = "INVALID"
 	EOF     = "EOF"
 )
 
 var identifiers = map[string]TokenType{
-	"out":   OUT,
-	"if":    IF,
-	"false": FALSE,
+	"out":    OUT,
+	"if":     IF,
+	"else":   ELSE,
+	"fun":    FUN,
+	"for":    FOR,
+	"in":     IN,
+	"return": RETURN,
+	"false":  FALSE,
+	"true":   TRUE,
 }
 
 func New(t TokenType, v string) Token {
